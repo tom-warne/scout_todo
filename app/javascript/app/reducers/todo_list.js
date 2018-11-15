@@ -1,4 +1,9 @@
 /* Actions */
+import {
+  SET_ACTIVE_LIST,
+  SET_ACTIVE_TASK,
+  EDIT_TASK
+} from 'actions/todo_list'
 
 /* Sagas */
 import {
@@ -34,10 +39,26 @@ const initialState = {
   tasks:      [initialTaskState]
 }
 
+const stateChange = {
+  data,
+  list_id,
+  params,
+  task_id,
+  type
+}
+
 /* Reducer */
-const todoList = (state = initialState, { data, id, params, type }) => {
+const todoList = (state = initialState, stateChange) => {
   switch(type){
 
+  /* Actions */
+  case SET_ACTIVE_LIST:
+
+  case SET_ACTIVE_TASK:
+
+  case EDIT_TASK:
+
+  /* Sagas */
   case INITIALIZE_LIST_FULFILLED:
     return {...state, ...data}
 
@@ -56,4 +77,4 @@ const todoList = (state = initialState, { data, id, params, type }) => {
   }
 }
 
-export default procurement
+export default todoList

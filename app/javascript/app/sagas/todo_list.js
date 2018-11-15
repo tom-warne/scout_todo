@@ -1,17 +1,6 @@
-import "regenerator-runtime/runtime";
+import "regenerator-runtime/runtime"; /* NOTE Is this needed?? -TW */f
 
-import {
-  all, // Combine Sagas for export
-  call, // (fn, args) useful for calling ajax requests
-  cps, // (fn, ...args) where fn is a node style function??
-  fork, // (fn, ...args) perform a non-blocking call on fn
-  put, // Dispatch action to redux reduxer. No longer under saga control.
-  race, // {effectName: effect, ...} : returns fastest effect and canels all others
-  take, // (): all action, fn: truthy results, String || [String]: match on type key
-  takeEvery, // Runs all requests concurrently
-  takeLatest, // Cancels any in progress copies and runs latest
-  throttle // Prevents actions during cool down to prevent repeatedly hitting server. Imagine an AutoComplete request limiter.
-} from 'redux-saga/effects'
+import { all, call, put, takeEvery } from 'redux-saga/effects'
 
 /* Asynchronous Requests */
 const INITIALIZE_LIST_REQUESTED = 'INITIALIZE_LIST_REQUESTED'
@@ -39,44 +28,44 @@ export const DELETE_LIST_FULFILLED     = 'DELETE_LIST_FULFILLED'
 
 
 /* Request Fulfillment */
-function* initializeList(){
+export function* initializeList(){
   yield put({
-    type: 'INITIALIZE_LIST_FULFILLED',
+    type: INITIALIZE_LIST_FULFILLED,
     data: yield call(select, INITIALIZE_LIST_ROUTE)
   })
 }
 
-function* createList({params: { list_id }}){
+export function* createList({params: { list_id }}){
   yield put({
-    type: 'CREATE_LIST_FULFILLED',
+    type: CREATE_LIST_FULFILLED,
     data: yield call(insert, CREATE_LIST_ROUTE)
   })
 }
 
-function* deleteList({params: { list_id }}){
+export function* deleteList({params: { list_id }}){
   yield put({
-    type: 'DELETE_LIST_FULFILLED',
+    type: DELETE_LIST_FULFILLED,
     data: yield call(destroy, CREATE_LIST_ROUTE)
   })
 }
 
-function* completeTask({params: { list_id, task_id }}){
+export function* completeTask({params: { list_id, task_id }}){
   yield put({
-    type: 'COMPLETE_TASK_FULFILLED',
+    type: COMPLETE_TASK_FULFILLED,
     data: yield call(insert, CREATE_LIST_ROUTE)
   })
 }
 
-function* createTask({params: { list_id }}){
+export function* createTask({params: { list_id }}){
   yield put({
-    type: 'CREATE_TASK_FULFILLED',
+    type: CREATE_TASK_FULFILLED,
     data: yield call(insert, CREATE_LIST_ROUTE)
   })
 }
 
-function* deleteTask({params: { list_id, task_id }}){
+export function* deleteTask({params: { list_id, task_id }}){
   yield put({
-    type: 'DELETE_LIST_FULFILLED',
+    type: DELETE_LIST_FULFILLED,
     data: yield call(destroy, CREATE_LIST_ROUTE)
   })
 }
