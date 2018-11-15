@@ -1,0 +1,6 @@
+2018-11-15 03:27:50.832 PST [6638] LOG:  listening on IPv6 address "::1", port 5432
+2018-11-15 03:27:50.832 PST [6638] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2018-11-15 03:27:50.879 PST [6638] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2018-11-15 03:27:51.031 PST [6639] LOG:  database system was shut down at 2018-11-15 03:15:36 PST
+2018-11-15 03:27:51.111 PST [6638] LOG:  database system is ready to accept connections
+2018-11-15 03:27:53.939 PST [6725] FATAL:  database "Tom" does not exist
