@@ -2,6 +2,9 @@ class TasksController < ApplicationController
   def create
   end
 
+  def complete
+  end
+
   def destroy
   end
 
