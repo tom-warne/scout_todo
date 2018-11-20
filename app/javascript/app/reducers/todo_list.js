@@ -7,12 +7,12 @@ import {
 
 /* Sagas */
 import {
-  INITIALIZE_LIST_FULFILLED,
+  INITIALIZE_TODO_LIST_FULFILLED,
   CREATE_LIST_FULFILLED,
   DELETE_LIST_FULFILLED,
   COMPLETE_TASK_FULFILLED,
   CREATE_TASK_FULFILLED,
-  DELETE_LIST_FULFILLED
+  DELETE_TASK_FULFILLED
 } from 'sagas/todo_list'
 
 /* Initial States */
@@ -48,7 +48,7 @@ const stateChange = {
 }
 
 /* Reducer */
-const todoList = (state = initialState, stateChange) => {
+const todoList = (state = initialState, { type }) => {
   switch(type){
 
   /* Actions */
@@ -59,7 +59,7 @@ const todoList = (state = initialState, stateChange) => {
   case EDIT_TASK:
 
   /* Sagas */
-  case INITIALIZE_LIST_FULFILLED:
+  case INITIALIZE_TODO_LIST_FULFILLED:
     return {...state, ...data}
 
   case CREATE_LIST_FULFILLED:
