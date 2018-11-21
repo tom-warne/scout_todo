@@ -1,22 +1,22 @@
 import React, { Component } from 'react'
 import { connect }          from 'react-redux'
 
-/* Components */
-import List from 'containers/list'
-import Task from 'containers/task'
-
 /* Sagas */
 import {
-  INITIALIZE_TODO_LIST_REQUEST,
-  CREATE_LIST_REQUEST
+  DELETE_LIST_REQUEST,
+  CREATE_TASK_REQUEST
 } from 'sagas/todo_list'
 
+/* Components */
+import Task from 'containers/task'
 
 @connect(
-  state => state.todoList,
+  ({todoList: { tasks }}, { id }) => ({
+    tasks: tasks.find(task => task.list_id === id)
+  }),
   null
 )
-export default class TodoListContainer extends Component {
+export default class ListContainer extends Component {
   static propTypes    = {
 
   }
@@ -30,7 +30,7 @@ export default class TodoListContainer extends Component {
   }
 
   componentWillMount(){
-    this.props.dispatch({type: INITIALIZE_TODO_LIST_REQUEST})
+
   }
 
   componentDidMount(){
@@ -63,16 +63,11 @@ export default class TodoListContainer extends Component {
   render(){
     return(
       <div>
-        {this.props.lists.map(list =>
-          <List {...list}>
-            {this.props.tasks.map(task =>
-              <Task {...task} />
-            )}
-          </List>
-        )}
+        {this.props.tasks.map(task => <Task {...task} />)}
       </div>
     )
   }
 
   /** Helpers **/
+
 }

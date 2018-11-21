@@ -1,4 +1,7 @@
 class ListsController < ApplicationController
+  def init
+    binding.pry
+  end
 
   def add_task
   end
@@ -13,6 +16,9 @@ class ListsController < ApplicationController
   end
 
   def update
+  end
+
+  def show
   end
 
 end

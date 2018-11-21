@@ -3,7 +3,10 @@ Rails.application.routes.draw do
 
   root 'lists#index'
 
-  resources :lists do
-    resources :tasks
+  namespace :todo_list, only: [] do
+    get :init
+    resources :lists do
+      resources :tasks
+    end
   end
 end

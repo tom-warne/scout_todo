@@ -1,7 +1,5 @@
+import { all  } from 'redux-saga/effects'
+
 import todoListSaga from 'sagas/todo_list'
 
-export default function* sagas(){
-  yield all([
-    todoListSaga
-  ])
-}
+export default todoListSaga

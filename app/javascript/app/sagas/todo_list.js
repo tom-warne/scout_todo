@@ -1,9 +1,11 @@
-import "regenerator-runtime/runtime"; /* NOTE Is this needed?? -TW */f
+import "regenerator-runtime/runtime"; /* NOTE Is this needed?? -TW */
 
 import { all, call, put, takeEvery } from 'redux-saga/effects'
 
+const list_id = null
+const task_id = null
 /* Routes */
-const INITIALIZE_TODO_LIST_ROUTE = 'lists/init.json'
+const INITIALIZE_TODO_LIST_ROUTE = 'todo_list/init.json'
 const CREATE_LIST_ROUTE          = '/lists/new.json'
 const DELETE_LIST_ROUTE          = `/lists/${list_id}.json`
 const COMPLETE_TASK_ROUTE        = `/lists/${list_id}/tasks/${task_id}/complete.json`
