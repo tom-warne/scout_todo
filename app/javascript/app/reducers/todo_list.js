@@ -42,7 +42,6 @@ const initialState = {
 /* Reducer */
 const todoList = (state = initialState, { data = {}, type }) => {
   const { lists, tasks } = data
-
   switch(type){
 
   /* Actions */
@@ -57,17 +56,14 @@ const todoList = (state = initialState, { data = {}, type }) => {
     return {...state, ...data}
 
   case CREATE_LIST_FULFILLED:
-    return {...state, lists}
-
   case DELETE_LIST_FULFILLED:
     return {...state, lists}
 
   case COMPLETE_TASK_FULFILLED:
 
   case CREATE_TASK_FULFILLED:
+  case DELETE_TASK_FULFILLED:
     return {...state, tasks}
-
-  case DELETE_LIST_FULFILLED:
 
   default:
     return state

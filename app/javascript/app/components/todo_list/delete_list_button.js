@@ -7,7 +7,7 @@ import { DELETE_LIST_REQUEST } from 'sagas/todo_list'
 const DeleteListButton = ({ dispatch, list_id }) => {
   return(
     <button
-      className = 'btn btn-sm btn-danger'
+      className = 'btn btn-xs btn-light'
       onClick   = {() => dispatch({type: DELETE_LIST_REQUEST, list_id})}>
 
       Delete This List!

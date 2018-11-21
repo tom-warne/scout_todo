@@ -8,7 +8,7 @@ const CREATE_LIST_ROUTE          = 'todo_list/create_list.json'
 const DELETE_LIST_ROUTE          = 'todo_list/delete_list.json'
 const COMPLETE_TASK_ROUTE        = 'todo_list/complete_task.json'
 const CREATE_TASK_ROUTE          = 'todo_list/create_task.json'
-const DELETE_TASK_ROUTE          = 'todo_list/create_task.json'
+const DELETE_TASK_ROUTE          = 'todo_list/delete_task.json'
 
 /* Asynchronous Requests */
 export const INITIALIZE_TODO_LIST_REQUEST = 'INITIALIZE_TODO_LIST_REQUEST'

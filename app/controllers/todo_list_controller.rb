@@ -35,7 +35,7 @@ class TodoListController < ApplicationController
   end
 
   def delete_task
-    List.destroy(todo_list_params[:task_id])
+    Task.destroy(todo_list_params[:task_id])
 
     render status: :ok, json: {tasks: query(Task.all.to_sql)}
   end
