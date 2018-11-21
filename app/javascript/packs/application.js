@@ -8,28 +8,28 @@
 // layout file, like app/views/layouts/application.html.erb
 
 /* React */
-import React                            from 'react'
-import { render }                       from 'react-dom'
-
-/* Redux */
-import { Provider }                     from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
-import logger                           from 'redux-logger'
-import createSagaMiddleware             from "redux-saga"
-
-/* Application */
-import App      from 'app'
-import reducers from 'reducers'
-import sagas    from 'sagas'
-
-/* Setup Constants */
-const sagaMiddleware = createSagaMiddleware()
-
-/* Execution Constants */
-const middleware = [sagaMiddleware, logger]
-const store      = createStore(reducers, applyMiddleware(...middleware))
-
-sagaMiddleware.run(sagas)
+// import React                            from 'react'
+// import { render }                       from 'react-dom'
+//
+// /* Redux */
+// import { Provider }                     from 'react-redux'
+// import { createStore, applyMiddleware } from 'redux'
+// import logger                           from 'redux-logger'
+// import createSagaMiddleware             from "redux-saga"
+//
+// /* Application */
+// // import App      from 'app'
+// import reducers from 'reducers'
+// import sagas    from 'sagas'
+//
+// /* Setup Constants */
+// const sagaMiddleware = createSagaMiddleware()
+//
+// /* Execution Constants */
+// const middleware = [sagaMiddleware, logger]
+// const store      = createStore(reducers, applyMiddleware(...middleware))
+//
+// sagaMiddleware.run(sagas)
 
 /* Application Attachment */
 document.addEventListener('DOMContentLoaded', () => {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { connect }          from 'react-redux'
 
 /* Components */
 import CreateTaskButton from 'components/todo_list/create_task_button'
@@ -13,8 +12,9 @@ export default class CreateTaskForm extends Component {
     const { title }             = this.state
     const { dispatch, list_id } = this.props
     return(
-      <div>
+      <div className = 'form-row'>
         <input
+          className = 'form-col'
           value    = {title}
           onChange = {e => this.setState({title: e.target.value})} />
 
