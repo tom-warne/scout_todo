@@ -7,7 +7,7 @@ const task_id = null
 /* Routes */
 const INITIALIZE_TODO_LIST_ROUTE = 'todo_list/init.json'
 const CREATE_LIST_ROUTE          = 'todo_list/create_list.json'
-const DELETE_LIST_ROUTE          = `/lists/${list_id}.json`
+const DELETE_LIST_ROUTE          = 'todo_list/delete_list.json'
 const COMPLETE_TASK_ROUTE        = `/lists/${list_id}/tasks/${task_id}/complete.json`
 const CREATE_TASK_ROUTE          = `/lists/${list_id}/tasks/new.json`
 const DELETE_TASK_ROUTE          = `/lists/${list_id}/tasks/${task_id}.json`
@@ -48,10 +48,12 @@ export function* createList(){
   })
 }
 
-export function* deleteList({params: { list_id }}){
-  yield put({
-    type: DELETE_LIST_FULFILLED,
-    data: yield call(destroy, DELETE_LIST_ROUTE)
+export function* deleteList(){
+  yield takeEvery(DELETE_LIST_REQUEST , function*({ list_id }){
+    yield put({
+      type: DELETE_LIST_FULFILLED,
+      data: yield call(destroy, DELETE_LIST_ROUTE, { list_id })
+    })
   })
 }
 
@@ -79,7 +81,8 @@ export function* deleteTask({params: { list_id, task_id }}){
 export default function* todoListSagas(){
   yield all([
     initializeTodoList(),
-    createList()
+    createList(),
+    deleteList()
   ])
 }
 

@@ -60,6 +60,7 @@ const todoList = (state = initialState, { data = {}, type }) => {
     return {...state, lists}
 
   case DELETE_LIST_FULFILLED:
+    return {...state, lists}
 
   case COMPLETE_TASK_FULFILLED:
 

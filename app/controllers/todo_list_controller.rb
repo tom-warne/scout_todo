@@ -17,4 +17,22 @@ class TodoListController < ApplicationController
       }
   end
 
+  def delete_list
+    List.destroy(todo_list_params[:list_id])
+
+    render status: :ok,
+      json: {
+        lists: query(List.all.to_sql)
+      }
+  end
+
+  private
+
+  def todo_list_params
+    params
+      .require(:todo_list)
+      .permit(:list_id)
+  end
+
+
 end
