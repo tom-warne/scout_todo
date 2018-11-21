@@ -1,19 +1,17 @@
 import React, { Component } from 'react'
-import { connect }          from 'react-redux'
-
-/* Sagas */
-import { COMPLETE_TASK_REQUEST } from 'sagas/todo_list'
 
 /* Components */
-import DeleteTaskButton from 'components/todo_list/delete_task_button'
+import DeleteTaskButton   from 'components/todo_list/delete_task_button'
+import CompleteTaskButton from 'components/todo_list/complete_task_button'
 
-const Task = ({ id, title, completed, dispatch }) => {
+const Task = ({ id, title, complete, dispatch }) => {
   return(
     <div>
-      <strong>
+      <strong style={{textDecoration: complete ? 'line-through' : 'none'}}>
         {title}
-        {<DeleteTaskButton task_id={id} {...{dispatch}} />}
       </strong>
+      {<DeleteTaskButton task_id={id} {...{dispatch}} />}
+      {<CompleteTaskButton task_id={id} {...{dispatch}} />}
     </div>
   )
 }

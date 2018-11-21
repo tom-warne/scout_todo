@@ -56,9 +56,11 @@ function* deleteList(){
 }
 
 function* completeTask(){
-  yield put({
-    type: COMPLETE_TASK_FULFILLED,
-    data: yield call(insert, COMPLETE_TASK_ROUTE)
+  yield takeEvery(COMPLETE_TASK_REQUEST , function*({task_id}){
+    yield put({
+      type: COMPLETE_TASK_FULFILLED,
+      data: yield call(insert, COMPLETE_TASK_ROUTE, {task_id})
+    })
   })
 }
 
@@ -85,6 +87,7 @@ export default function* todoListSagas(){
     initializeTodoList(),
     createList(),
     deleteList(),
+    completeTask(),
     createTask(),
     deleteTask()
   ])

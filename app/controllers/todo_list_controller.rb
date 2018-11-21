@@ -26,6 +26,9 @@ class TodoListController < ApplicationController
 
   # Task Actions
   def complete_task
+    Task.find(todo_list_params[:task_id]).toggle(:complete).save
+
+    render status: :ok, json: {tasks: query(Task.all.to_sql)}
   end
 
   def create_task
