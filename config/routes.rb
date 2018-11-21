@@ -3,10 +3,12 @@ Rails.application.routes.draw do
 
   root 'lists#index'
 
-  namespace :todo_list, only: [] do
-    get :init
-    resources :lists do
-      resources :tasks
+  constraints format: :json do
+    namespace :todo_list, only: [] do
+      get :init
+      resources :lists do
+        resources :tasks
+      end
     end
   end
 end

@@ -28,7 +28,7 @@ export default class TaskContainer extends Component {
   }
 
   componentWillMount(){
-    
+
   }
 
   componentDidMount(){
@@ -60,11 +60,9 @@ export default class TaskContainer extends Component {
   /** Render **/
   render(){
     return(
-      <OuterFrame>
-        <div>
-          {this.props.lists.map(List)}
-        </div>
-      </OuterFrame>
+      <div>
+        {this.props.id}
+      </div>
     )
   }
 

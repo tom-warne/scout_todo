@@ -7,9 +7,6 @@ import {
   CREATE_TASK_REQUEST
 } from 'sagas/todo_list'
 
-/* Components */
-import Task from 'containers/task'
-
 @connect(
   ({todoList: { tasks }}, { id }) => ({
     tasks: tasks.find(task => task.list_id === id)
@@ -63,7 +60,7 @@ export default class ListContainer extends Component {
   render(){
     return(
       <div>
-        {this.props.tasks.map(task => <Task {...task} />)}
+        {this.props.children}
       </div>
     )
   }

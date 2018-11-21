@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import { connect }          from 'react-redux'
 
-/* Components */
+/* Containers */
 import List from 'containers/list'
 import Task from 'containers/task'
+
+/* Components */
+import createListButton from 'components/todo_list/create_list_button'
 
 /* Sagas */
 import {
@@ -13,7 +16,7 @@ import {
 
 
 @connect(
-  state => state.todoList,
+  ({todoList: { lists, tasks }}) => ({ lists, tasks}),
   null
 )
 export default class TodoListContainer extends Component {
@@ -64,12 +67,13 @@ export default class TodoListContainer extends Component {
     return(
       <div>
         {this.props.lists.map(list =>
-          <List {...list}>
-            {this.props.tasks.map(task =>
-              <Task {...task} />
-            )}
+          <List key={list.id} { ...list}>
+            {this.props.tasks
+              .filter(task => task.list_id === list.id)
+              .map(task    => <Task key={task.id} {...task} />)}
           </List>
         )}
+        <CreateTaskButton />
       </div>
     )
   }

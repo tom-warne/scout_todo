@@ -39,16 +39,8 @@ const initialState = {
   tasks:      [initialTaskState]
 }
 
-// const stateChange = {
-//   data,
-//   list_id,
-//   params,
-//   task_id,
-//   type
-// }
-
 /* Reducer */
-const todoList = (state = initialState, { data, type }) => {
+const todoList = (state = initialState, { type, data }) => {
   switch(type){
 
   /* Actions */
