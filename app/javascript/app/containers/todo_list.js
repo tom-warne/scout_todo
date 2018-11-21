@@ -2,12 +2,15 @@ import React, { Component } from 'react'
 import { connect }          from 'react-redux'
 
 /* Containers */
+import CreateTaskForm from 'containers/todo_list/create_task_form'
 import List from 'containers/list'
-import Task from 'containers/task'
+
 
 /* Components */
 import CreateListButton from 'components/todo_list/create_list_button'
 import DeleteListButton from 'components/todo_list/delete_list_button'
+import Task             from 'components/todo_list/task'
+
 
 /* Sagas */
 import { INITIALIZE_TODO_LIST_REQUEST } from 'sagas/todo_list'
@@ -65,16 +68,17 @@ export default class TodoListContainer extends Component {
     const { dispatch, lists, tasks } = this.props
     return(
       <div>
+        <CreateListButton {...{ dispatch }} />
+
         {lists.map(list =>
           <List key={list.id} {...list}>
+            <DeleteListButton list_id={list.id} {...{ dispatch }} />
             {tasks
               .filter(task => task.list_id === list.id)
-              .map(   task => <Task key={task.id} {...task} />)}
-
-            <DeleteListButton list_id={list.id} {...{ dispatch }} />
+              .map(   task => <Task key={task.id} {...task} {...{dispatch}} />)}
+            <CreateTaskForm list_id={list.id} {...{dispatch}}/>
           </List>
         )}
-        <CreateListButton {...{ dispatch }} />
       </div>
     )
   }

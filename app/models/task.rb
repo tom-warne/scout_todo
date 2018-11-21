@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
   belongs_to :list
 
-  validates :complete, :title, presence: true
+  validates :title, presence: true
 end
