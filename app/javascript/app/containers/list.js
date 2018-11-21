@@ -40,7 +40,7 @@ export default class ListContainer extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState){
-    true
+    return true
   }
 
   componentWillUpdate(nextProps, nextState){

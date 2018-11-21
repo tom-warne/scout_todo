@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   constraints format: :json do
     namespace :todo_list, only: [] do
       get :init
+      put :create_list
       resources :lists do
         resources :tasks
       end

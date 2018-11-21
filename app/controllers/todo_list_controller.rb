@@ -8,4 +8,13 @@ class TodoListController < ApplicationController
       }
   end
 
+  def create_list
+    List.create(date: Date.current)
+
+    render status: :ok,
+      json: {
+        lists: query(List.all.to_sql)
+      }
+  end
+
 end

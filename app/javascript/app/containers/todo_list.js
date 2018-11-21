@@ -6,17 +6,14 @@ import List from 'containers/list'
 import Task from 'containers/task'
 
 /* Components */
-import createListButton from 'components/todo_list/create_list_button'
+import CreateListButton from 'components/todo_list/create_list_button'
 
 /* Sagas */
-import {
-  INITIALIZE_TODO_LIST_REQUEST,
-  CREATE_LIST_REQUEST
-} from 'sagas/todo_list'
+import { INITIALIZE_TODO_LIST_REQUEST } from 'sagas/todo_list'
 
 
 @connect(
-  ({todoList: { lists, tasks }}) => ({ lists, tasks}),
+  ({todoList: { lists, tasks }}) => ({ lists, tasks }),
   null
 )
 export default class TodoListContainer extends Component {
@@ -46,7 +43,7 @@ export default class TodoListContainer extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState){
-    true
+    return true
   }
 
   componentWillUpdate(nextProps, nextState){
@@ -64,16 +61,17 @@ export default class TodoListContainer extends Component {
 
   /** Render **/
   render(){
+    const { dispatch, lists, tasks } = this.props
     return(
       <div>
-        {this.props.lists.map(list =>
-          <List key={list.id} { ...list}>
-            {this.props.tasks
+        {lists.map(list =>
+          <List key={list.id} {...list}>
+            {tasks
               .filter(task => task.list_id === list.id)
-              .map(task    => <Task key={task.id} {...task} />)}
+              .map(   task => <Task key={task.id} {...task} />)}
           </List>
         )}
-        <CreateTaskButton />
+        <CreateListButton {...{ dispatch }} />
       </div>
     )
   }
