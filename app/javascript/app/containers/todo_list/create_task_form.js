@@ -16,6 +16,7 @@ export default class CreateTaskForm extends Component {
         <input
           className = 'form-col'
           value    = {title}
+          // TODO: Watch for {13} for submit -TW
           onChange = {e => this.setState({title: e.target.value})} />
 
         <CreateTaskButton {...{dispatch, list_id, title}} />
