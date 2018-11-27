@@ -28,19 +28,19 @@ class TodoListController < ApplicationController
   def complete_task
     Task.find(todo_list_params[:task_id]).toggle(:complete).save
 
-    render status: :ok, json: {tasks: query(Task.all.to_sql)}
+    render status: :ok, json: {tasks: query(Task.order(:id).to_sql)}
   end
 
   def create_task
     Task.create(todo_list_params.except(:task_id))
 
-    render status: :ok, json: {tasks: query(Task.all.to_sql)}
+    render status: :ok, json: {tasks: query(Task.order(:id).to_sql)}
   end
 
   def delete_task
     Task.destroy(todo_list_params[:task_id])
 
-    render status: :ok, json: {tasks: query(Task.all.to_sql)}
+    render status: :ok, json: {tasks: query(Task.order(:id).to_sql)}
   end
 
   private
