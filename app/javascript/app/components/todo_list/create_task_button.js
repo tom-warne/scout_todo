@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { connect }          from 'react-redux'
 
 /* Sagas */
 import { CREATE_TASK_REQUEST } from 'sagas/todo_list'

@@ -1,14 +1,9 @@
 import React, { Component } from 'react'
 import { connect }          from 'react-redux'
 
-/* Containers */
-import CreateTaskForm from 'containers/todo_list/create_task_form'
-
 /* Components */
 import CreateListButton from 'components/todo_list/create_list_button'
-import DeleteListButton from 'components/todo_list/delete_list_button'
 import List             from 'components/todo_list/list'
-import Task             from 'components/todo_list/task'
 
 /* Sagas */
 import { INITIALIZE_TODO_LIST_REQUEST } from 'sagas/todo_list'
@@ -29,10 +24,6 @@ export default class TodoListContainer extends Component {
   componentWillUnmount(){}
 
   /** Styles **/
-  listHolderStyles = {
-    paddingTop: '40px'
-  }
-
   outerStyles = {
     padding:         '20px',
     margin:          '20px',
@@ -41,21 +32,27 @@ export default class TodoListContainer extends Component {
     border:          'solid 2px black'
   }
 
+  titleStyles = {
+    fontWeight: 'bold',
+    fontSize:   '2em'
+  }
+
   /** Render **/
   render(){
-    const { dispatch, lists, tasks } = this.props
+    const {dispatch, lists, tasks} = this.props
     return(
       <div style={this.outerStyles}>
-        <CreateListButton {...{dispatch}} />
-        <div style={this.listHolderStyles}>
+        <span style={this.titleStyles}>Simple React/Redux TODO List</span>
+        <span>
+          <CreateListButton {...{dispatch}} />
+        </span>
+        <div>
           {lists.map(list =>
-            <List key={list.id} {...list} {...{dispatch}}>
-              <DeleteListButton list_id={list.id} {...{dispatch}} />
-              {tasks
-                .filter(task => task.list_id === list.id)
-                .map(   task => <Task key={task.id} {...task} {...{dispatch}} />)}
-              <CreateTaskForm list_id={list.id} {...{dispatch}}/>
-            </List>
+            <List
+              key   = {list.id}
+              tasks = {tasks.filter(task => task.list_id === list.id)}
+              {...list}
+              {...{dispatch}} />
           )}
         </div>
       </div>

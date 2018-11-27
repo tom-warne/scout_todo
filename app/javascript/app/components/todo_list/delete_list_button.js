@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { connect }          from 'react-redux'
 
 /* Sagas */
 import { DELETE_LIST_REQUEST } from 'sagas/todo_list'

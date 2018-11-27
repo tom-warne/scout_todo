@@ -8,16 +8,22 @@ export default class CreateTaskForm extends Component {
     title: ''
   }
 
+  inputStyles = {
+    marginRight: '10px',
+    width:       '65%'
+  }
+
   render(){
-    const { title }             = this.state
-    const { dispatch, list_id } = this.props
+    const {dispatch, list_id} = this.props
+    const {title}             = this.state
     return(
-      <div className = 'form-row'>
+      <div className='form-row'>
         <input
           className = 'form-col'
-          value    = {title}
+           style={this.inputStyles}
+          value     = {title}
           // TODO: Watch for {13} for submit -TW
-          onChange = {e => this.setState({title: e.target.value})} />
+          onChange  = {e => this.setState({title: e.target.value})} />
 
         <CreateTaskButton {...{dispatch, list_id, title}} />
       </div>

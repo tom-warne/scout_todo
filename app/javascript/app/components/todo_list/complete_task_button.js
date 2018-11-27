@@ -3,13 +3,13 @@ import React, { Component } from 'react'
 /* Sagas */
 import { COMPLETE_TASK_REQUEST } from 'sagas/todo_list'
 
-const CompleteTaskButton = ({ dispatch, task_id }) => {
+const CompleteTaskButton = ({dispatch, task_id}) => {
   return(
     <button
-      className = 'btn btn-sm btn-light'
+      className = 'btn btn-sm btn-success'
       onClick   = {() => dispatch({type: COMPLETE_TASK_REQUEST, task_id})}>
 
-      <strong style={{color: 'green'}}>√</strong>
+      <strong>√</strong>
     </button>
   )
 }
