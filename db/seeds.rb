@@ -10,9 +10,9 @@
 
 list  = List.find_or_create_by(date: Date.current)
 
-tasks = 3.times { |i| Task.find_or_create_by(list: list, title: "Tag ##{i + 1}") }
+3.times { |i| Task.find_or_create_by(list: list, title: "Tag ##{i + 1}") }
 
-tags  = 6.times { |i| Tag.find_or_create_by(name: "Task ##{i + 1}") }
+6.times { |i| Tag.find_or_create_by(name: "Task ##{i + 1}") }
 
 Tag.find_in_batches(batch_size: 2).with_index do |tags, batch|
   tags.each { |tag| TagTask.find_or_create_by(tag: tag, task_id: batch) }
