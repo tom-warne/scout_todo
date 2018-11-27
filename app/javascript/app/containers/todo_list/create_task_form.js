@@ -20,7 +20,7 @@ export default class CreateTaskForm extends Component {
       <div className='form-row'>
         <input
           className = 'form-col'
-           style={this.inputStyles}
+          style     = {this.inputStyles}
           value     = {title}
           // TODO: Watch for {13} for submit -TW
           onChange  = {e => this.setState({title: e.target.value})} />

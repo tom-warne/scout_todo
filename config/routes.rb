@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
       put    :create_list
       put    :create_task
-      put    :complete_task #toggle
+      put    :complete_task # TODO This whole routing should be updated to include `toggle` -TW
 
       delete :delete_list
       delete :delete_task

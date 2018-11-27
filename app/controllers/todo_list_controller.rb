@@ -43,8 +43,6 @@ class TodoListController < ApplicationController
     render status: :ok, json: {tasks: query(Task.all.to_sql)}
   end
 
-  # Task Actions
-
   private
 
   def todo_list_params

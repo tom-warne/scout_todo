@@ -1,8 +1,7 @@
 /* Actions */
 import {
   SET_ACTIVE_LIST,
-  SET_ACTIVE_TASK,
-  EDIT_TASK
+  SET_ACTIVE_TASK
 } from 'actions/todo_list'
 
 /* Sagas */
@@ -40,17 +39,15 @@ const initialState = {
 }
 
 /* Reducer */
-const todoList = (state = initialState, { data = {}, type }) => {
+const todoList = (state = initialState, {data = {}, type}) => {
   const { lists, tasks } = data
 
   switch(type){
 
   /* Actions */
-  case SET_ACTIVE_LIST:
-
-  case SET_ACTIVE_TASK:
-
-  case EDIT_TASK:
+  // case SET_ACTIVE_LIST:
+  //
+  // case SET_ACTIVE_TASK:
 
   /* Sagas */
   case INITIALIZE_TODO_LIST_FULFILLED:

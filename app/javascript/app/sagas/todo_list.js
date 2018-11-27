@@ -2,6 +2,8 @@ import "regenerator-runtime/runtime"; /* NOTE Is this needed?? -TW */
 
 import { all, call, put, takeEvery } from 'redux-saga/effects'
 
+// TODO Edit task routing -TW
+
 /* Routes */
 const INITIALIZE_TODO_LIST_ROUTE = 'todo_list/init.json'
 const CREATE_LIST_ROUTE          = 'todo_list/create_list.json'

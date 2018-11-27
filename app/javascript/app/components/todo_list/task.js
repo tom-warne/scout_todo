@@ -6,12 +6,12 @@ import CompleteTaskButton from 'components/todo_list/complete_task_button'
 
 const Task = ({complete, dispatch, id, title}) => {
   const taskNameStyles = {
-    display: 'inline-block',
-    width: '80%',
-    background: 'white',
-    border: 'solid 1px black',
+    display:      'inline-block',
+    width:        '80%',
+    background:   'white',
+    border:       'solid 1px black',
     borderRadius: '2px',
-    marginRight: '5px'
+    marginRight:  '5px'
   }
 
   return(
